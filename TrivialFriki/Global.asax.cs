@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Data.Entity;
+using TrivialFriki.Models;
 
 namespace TrivialFriki
 {
@@ -12,6 +14,10 @@ namespace TrivialFriki
     {
         protected void Application_Start()
         {
+
+            // Borrar en producción!!!
+            Database.SetInitializer<TrivialFrikiContext>(new DropCreateDatabaseIfModelChanges<TrivialFrikiContext>());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
